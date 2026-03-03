@@ -1,0 +1,271 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1a1a2e;
+    font-family: system-ui, -apple-system, sans-serif;
+    min-height: 100dvh;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    color: #e2e8f0; 
+}
+
+.sidebar {
+    background-color: #1e1e1e;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 1.5rem;
+    border-right: 1px solid #2a2a40;
+}
+
+.sidebar h3 {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
+.sidebar .container-projects {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow-y: auto; 
+}
+
+.project-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: 6px;
+    background-color: transparent; 
+    color: #e2e8f0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.project-item:hover {
+    background-color: #2a2a40;
+}
+
+.project-item.active-project {
+    background-color: #4f46e5; 
+    color: white;
+    font-weight: bold;
+}
+
+.btn-delete-project {
+    background-color: transparent;
+    color: #ef4444;
+    border: none;
+    border-radius: 4px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; 
+    transition: 0.2s;
+}
+
+.project-item:hover .btn-delete-project,
+.project-item.active-project .btn-delete-project {
+    opacity: 1; 
+}
+
+.btn-delete-project:hover {
+    background-color: #ef4444;
+    color: white;
+}
+
+.main-content {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 20px;
+    padding: 2rem 3rem;
+    overflow-y: auto;
+}
+
+.main-content .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #2a2a40;
+}
+
+.name-project {
+    font-size: 2rem;
+    color: #ffffff;
+}
+
+.container-tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2a2a40; 
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    border-left: 5px solid gray; 
+    transition: transform 0.2s ease;
+}
+
+.task-item:hover {
+    transform: translateX(5px); 
+}
+
+.task-item.priority-high { border-left-color: #ef4444; } 
+.task-item.priority-medium { border-left-color: #f59e0b; } 
+.task-item.priority-low { border-left-color: #10b981; } 
+
+.task-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.task-title {
+    font-size: 1.1rem;
+    color: #ffffff;
+}
+
+.task-meta {
+    display: flex;
+    gap: 15px;
+    font-size: 0.85rem;
+    color: #94a3b8;
+    align-items: center;
+}
+
+.task-badge {
+    background-color: #1e1e1e;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.btn-delete-task {
+    background-color: transparent;
+    color: #ef4444;
+    border: 1px solid #ef4444;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.btn-delete-task:hover {
+    background-color: #ef4444;
+    color: white;
+}
+
+.btn-add-task,
+.btn-add-project {
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: white;
+    background-color: #8b5cf6; 
+    border: none;
+    border-radius: 8px;
+    padding: 0.7rem 1.2rem;    
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s;
+}
+
+.btn-add-task:hover,
+.btn-add-project:hover {
+    background-color: #7c3aed;
+}
+
+.btn-add-task:active,
+.btn-add-project:active {
+    transform: scale(0.95);
+}
+
+dialog {
+    background-color: #1e1e1e;
+    color: #e2e8f0;
+    border: 1px solid #3f3f5a;
+    border-radius: 10px;
+    padding: 2rem;
+    margin: auto; 
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(3px);
+}
+
+form div {
+    margin-bottom: 1.2rem;
+}
+
+form label {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 10px;
+    background-color: #2a2a40;
+    border: 1px solid #3f3f5a;
+    color: white;
+    border-radius: 6px;
+    font-family: inherit;
+    outline: none;
+}
+
+form input:focus,
+form select:focus {
+    border-color: #8b5cf6; 
+}
+
+.btn-accept-project,
+.btn-accept-task {
+    background-color: #10b981; 
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-cancel-project,
+.btn-cancel-task {
+    background-color: transparent;
+    color: #94a3b8;
+    border: 1px solid #3f3f5a;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.btn-accept-project:hover, .btn-accept-task:hover { background-color: #059669; }
+.btn-cancel-project:hover, .btn-cancel-task:hover { background-color: #3f3f5a; color: white; }
